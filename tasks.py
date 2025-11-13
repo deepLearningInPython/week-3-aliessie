@@ -84,15 +84,16 @@ def compute_output_size_2d(input_matrix, kernel_matrix):
 def convolute_2d(input_matrix, kernel_matrix):
     input_h, input_w = input_matrix.shape
     kernel_h, kernel_w = kernel_matrix.shape
-   
-    output_h = input_h - kernel_h + 1 
+    
+    output_h = input_h - kernel_h + 1
     output_w = input_w - kernel_w + 1
     
     output = np.zeros((output_h, output_w))
-
-    for i in range(output_h): 
+    
+    for i in range(output_h):
         for j in range(output_w):
             window = input_matrix[i:i+kernel_h, j:j+kernel_w]
-            output[i,j] = (window * kernel_matrix).sum()
-        return output
+            output[i, j] = (window * kernel_matrix).sum()
+    
+    return output
 # -----------------------------------------------
